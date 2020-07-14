@@ -1,9 +1,17 @@
 package com.example.dialectdictionary;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.text.TextUtils;
 import android.util.Log;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 public class DatabaseTable {
 
@@ -17,12 +25,13 @@ public class DatabaseTable {
     private static final String FTS_VIRTUAL_TABLE = "FTS";
     private static final int DATABASE_VERSION = 1;
 
-    private final DatabaseOpenHelper databaseOpenHelper;
+    public final DatabaseOpenHelper databaseOpenHelper;
 
     public DatabaseTable(Context context) {
         databaseOpenHelper = new DatabaseOpenHelper(context);
     }
 
+    //Helps Instantiate Database
     private static class DatabaseOpenHelper extends SQLiteOpenHelper {
 
         private final Context helperContext;
@@ -41,8 +50,10 @@ public class DatabaseTable {
 
         @Override
         public void onCreate(SQLiteDatabase db) {
+            //Creates Database
             mDatabase = db;
             mDatabase.execSQL(FTS_TABLE_CREATE);
+            //Starts New Thread
             loadDictionary();
         }
 
@@ -54,6 +65,7 @@ public class DatabaseTable {
             onCreate(db);
         }
 
+        //Starts a New Thread to Load Words
         private void loadDictionary() {
             new Thread(new Runnable() {
                 public void run() {
@@ -66,6 +78,7 @@ public class DatabaseTable {
             }).start();
         }
 
+        //Load words reads a file and loads into a Database
         private void loadWords() throws IOException {
             final Resources resources = helperContext.getResources();
             InputStream inputStream = resources.openRawResource(R.raw.definitions);
@@ -91,11 +104,7 @@ public class DatabaseTable {
             initialValues.put(COL_WORD, word);
             initialValues.put(COL_DEFINITION, definition);
 
-            return database.insert(FTS_VIRTUAL_TABLE, null, initialValues);
+            return mDatabase.insert(FTS_VIRTUAL_TABLE, null, initialValues);
         }
-
-
-
-
     }
 }

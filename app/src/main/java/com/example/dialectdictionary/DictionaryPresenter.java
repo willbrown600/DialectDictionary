@@ -1,5 +1,6 @@
 package com.example.dialectdictionary;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,8 +15,11 @@ public class DictionaryPresenter {
     Context context;
 
     void submit(String term, String definition) {
+
         VocabTerm newTerm = new VocabTerm(term, definition);
-        //Send newTerm to Map (datastructure)
+
+
+        //Send newTerm to Map (datastructure) with Key
 
         //Sort - map of different keys to a single value. Pull array of keys based on how you want to sort, use .sort() on the array
         //order the elements of the map based on the order of the array (how?)
@@ -26,9 +30,7 @@ public class DictionaryPresenter {
 
         //On closing app, save Map to file (maybe save with every iteration of submit?)
 
-        //DatabaseTable databaseTable = new DatabaseTable(Context context);
 
-        //databaseTable
 
 
     }

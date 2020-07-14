@@ -12,6 +12,7 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_dictionary);
+
     }
 
     //Upon Clicking Home Button, start Main Activity
@@ -25,4 +26,6 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
         Intent intent = new Intent(this, AddTermActivity.class);
         startActivity(intent);
     }
+
+
 }

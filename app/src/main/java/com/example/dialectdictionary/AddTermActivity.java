@@ -25,7 +25,6 @@ public class AddTermActivity extends AppCompatActivity {
         EditText term = findViewById(R.id.term);
         String message = term.getText().toString();
 
-
         //Get the definition from Definition Input, Save as a String
         EditText definition = findViewById(R.id.definition);
         String message2 = definition.getText().toString();
@@ -35,6 +34,7 @@ public class AddTermActivity extends AppCompatActivity {
 
         //Start Personal Dictionary Activity
         startActivity(intent);
+
 
 
         /*EditText cityText = (EditText)findViewById(R.id.editText);
