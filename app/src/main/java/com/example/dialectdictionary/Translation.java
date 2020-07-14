@@ -1,6 +1,8 @@
 package com.example.dialectdictionary;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -30,6 +32,11 @@ public class Translation extends AppCompatActivity {
         DefinitionView.setText(w.getDefinitionWord());
 
 
+    }
+
+    public void StartMainActivity(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -30,6 +30,10 @@ public class TranslateActivity extends AppCompatActivity implements Adapter.View
 
 
         }
+        public void StartMainActivity(View view) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
 
         public void onSubmitButtonClicked(View view) {
             EditText word = findViewById(R.id.textView7);

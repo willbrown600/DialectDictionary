@@ -18,11 +18,15 @@ public class AddTermActivity extends AppCompatActivity {
 
     public void Submit(View view) {
         Intent intent = new Intent(this, PersonalDictionaryActivity.class);
-        EditText definition = (EditText) findViewById(R.id.definition);
+        EditText definition = findViewById(R.id.definition);
         String message = definition.getText().toString();
-        EditText term = (EditText) findViewById(R.id.term);
+        EditText term = findViewById(R.id.term);
         String message2 = term.getText().toString();
         p.submit(message, message2);
         startActivity(intent);
+
+        ?
+        /*EditText cityText = (EditText)findViewById(R.id.editText);
+            String city = cityText.getText().toString(); */
     }
 }
