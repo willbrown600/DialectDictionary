@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 import static android.util.Log.*;
 
-public class DictionaryPresenter extends DatabaseTable {
+public class DictionaryPresenter {
 
     Context context;
 
@@ -26,9 +26,9 @@ public class DictionaryPresenter extends DatabaseTable {
 
         //On closing app, save Map to file (maybe save with every iteration of submit?)
 
-        DatabaseTable databaseTable = new DatabaseTable(Context context);
+        //DatabaseTable databaseTable = new DatabaseTable(Context context);
 
-        databaseTable
+        //databaseTable
 
 
     }

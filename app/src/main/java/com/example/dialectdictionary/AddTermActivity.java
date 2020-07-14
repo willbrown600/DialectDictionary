@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class AddTermActivity extends AppCompatActivity {
+    //Creates an Instance of the Dictionary Presenter Class
     DictionaryPresenter p = new DictionaryPresenter();
 
     @Override
@@ -17,15 +18,25 @@ public class AddTermActivity extends AppCompatActivity {
     }
 
     public void Submit(View view) {
+        //When Submit is clicked, start the Personal Dictionary Activity
         Intent intent = new Intent(this, PersonalDictionaryActivity.class);
-        EditText definition = findViewById(R.id.definition);
-        String message = definition.getText().toString();
+
+        //Get Term from Text Input, save as string
         EditText term = findViewById(R.id.term);
-        String message2 = term.getText().toString();
+        String message = term.getText().toString();
+
+
+        //Get the definition from Definition Input, Save as a String
+        EditText definition = findViewById(R.id.definition);
+        String message2 = definition.getText().toString();
+
+        //Submit Term and Definition to Dictionary Presenter
         p.submit(message, message2);
+
+        //Start Personal Dictionary Activity
         startActivity(intent);
 
-        ?
+
         /*EditText cityText = (EditText)findViewById(R.id.editText);
             String city = cityText.getText().toString(); */
     }

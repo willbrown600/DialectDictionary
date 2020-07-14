@@ -14,11 +14,13 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
         setContentView(R.layout.activity_personal_dictionary);
     }
 
+    //Upon Clicking Home Button, start Main Activity
     public void StartMainActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 
+    //Upon clicking the Plus Button, start the Add Term Activity
     public void AddNewTerm(View view) {
         Intent intent = new Intent(this, AddTermActivity.class);
         startActivity(intent);

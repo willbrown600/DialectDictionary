@@ -43,6 +43,7 @@ public class DatabaseTable {
         public void onCreate(SQLiteDatabase db) {
             mDatabase = db;
             mDatabase.execSQL(FTS_TABLE_CREATE);
+            loadDictionary();
         }
 
         @Override
@@ -52,5 +53,49 @@ public class DatabaseTable {
             db.execSQL("DROP TABLE IF EXISTS " + FTS_VIRTUAL_TABLE);
             onCreate(db);
         }
+
+        private void loadDictionary() {
+            new Thread(new Runnable() {
+                public void run() {
+                    try {
+                        loadWords();
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+            }).start();
+        }
+
+        private void loadWords() throws IOException {
+            final Resources resources = helperContext.getResources();
+            InputStream inputStream = resources.openRawResource(R.raw.definitions);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+            try {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    String[] strings = TextUtils.split(line, "-");
+                    if (strings.length < 2) continue;
+                    long id = addWord(strings[0].trim(), strings[1].trim());
+                    if (id < 0) {
+                        Log.e(TAG, "unable to add word: " + strings[0].trim());
+                    }
+                }
+            } finally {
+                reader.close();
+            }
+        }
+
+        public long addWord(String word, String definition) {
+            ContentValues initialValues = new ContentValues();
+            initialValues.put(COL_WORD, word);
+            initialValues.put(COL_DEFINITION, definition);
+
+            return database.insert(FTS_VIRTUAL_TABLE, null, initialValues);
+        }
+
+
+
+
     }
 }
