@@ -27,5 +27,6 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-
+    /* We need a display map Function that will receive the map from the Dictionary Presenter
+    and display to listview and will display oncreate of this activity */
 }

@@ -36,8 +36,5 @@ public class AddTermActivity extends AppCompatActivity {
         startActivity(intent);
 
 
-
-        /*EditText cityText = (EditText)findViewById(R.id.editText);
-            String city = cityText.getText().toString(); */
     }
 }
