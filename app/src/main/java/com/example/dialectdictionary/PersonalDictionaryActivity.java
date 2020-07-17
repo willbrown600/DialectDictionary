@@ -8,6 +8,7 @@ import android.view.View;
 
 public class PersonalDictionaryActivity extends AppCompatActivity {
 
+    DictionaryPresenter d = new DictionaryPresenter();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +26,16 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
     public void AddNewTerm(View view) {
         Intent intent = new Intent(this, AddTermActivity.class);
         startActivity(intent);
+    }
+
+    public void alphabeticSort(View view) {
+        Object term = new VocabTerm();
+        term = d.sortAlphabetically();
+
+    }
+
+    public void displayTerm(View view) {
+
     }
 
     /* We need a display map Function that will receive the map from the Dictionary Presenter

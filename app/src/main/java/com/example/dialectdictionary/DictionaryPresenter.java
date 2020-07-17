@@ -1,15 +1,9 @@
 package com.example.dialectdictionary;
 
-import android.content.ContentValues;
 import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.io.IOException;
-import java.util.HashMap;
-
-import static android.util.Log.*;
+import java.util.ArrayList;
 
 public class DictionaryPresenter {
 
@@ -30,7 +24,9 @@ public class DictionaryPresenter {
                     throw new RuntimeException(e);
                 }
             }
-        }}
+        });
+    }
+
 
     void addItem(String term, String definition) throws IOException {
         //Get the First Initial from the Term
@@ -76,6 +72,14 @@ public class DictionaryPresenter {
         } finally {
 
         }*/
+    }
+
+    public VocabTerm sortAlphabetically() {
+        ArrayList<String> keys = TermMap.sortByAlphabeticKey();
+        for (String x : keys)
+            return (VocabTerm) map.get(x);
+
+
     }
 
 }
