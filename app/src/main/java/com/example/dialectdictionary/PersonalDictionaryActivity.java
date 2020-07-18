@@ -13,6 +13,7 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_dictionary);
 
+
     }
 
     //Upon Clicking Home Button, start Main Activity
