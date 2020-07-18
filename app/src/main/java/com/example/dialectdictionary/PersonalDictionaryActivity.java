@@ -5,15 +5,23 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class PersonalDictionaryActivity extends AppCompatActivity {
-
     DictionaryPresenter d = new DictionaryPresenter();
+    ArrayList<VocabTerm> terms;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_dictionary);
-
+        VocabTerm blank = new VocabTerm("hola", "casa");
+        terms.add(blank);
+        ListView pListView = (ListView) findViewById(R.id.listView);
+        TermListAdapater adapter = new TermListAdapater(this, R.layout.adapter_view_layout, terms);
+        pListView.setAdapter(adapter);
     }
 
     //Upon Clicking Home Button, start Main Activity
@@ -29,14 +37,18 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
     }
 
     public void alphabeticSort(View view) {
-        Object term = new VocabTerm();
-        term = d.sortAlphabetically();
-
+        terms= d.sortAlphabetically();
+    }
+    public void numericSort(View view) {
+        terms= d.sortNumerically();
     }
 
-    public void displayTerm(View view) {
 
-    }
+
+
+    /*public void displayTerm(View view) {
+
+    }*/
 
     /* We need a display map Function that will receive the map from the Dictionary Presenter
     and display to listview and will display oncreate of this activity */
