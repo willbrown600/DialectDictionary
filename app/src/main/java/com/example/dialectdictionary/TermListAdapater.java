@@ -29,7 +29,11 @@ public class TermListAdapater extends ArrayAdapter<VocabTerm> {
         TextView term;
         TextView definition;
     }
-
+    /*
+    @param context
+    @param resource
+    @param objects
+     */
     public TermListAdapater(Context context, int resource, ArrayList<VocabTerm> objects) {
         super(context, resource, objects);
         mContext = context;
@@ -40,9 +44,9 @@ public class TermListAdapater extends ArrayAdapter<VocabTerm> {
     @NonNull
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        //get the persons information
-        String term = Objects.requireNonNull(getItem(position)).getTerm();
-        String definition = Objects.requireNonNull(getItem(position)).getDefinition();
+        //get the VocabTerm information
+        String term = getItem(position).getTerm();
+        String definition = getItem(position).getDefinition();
 
         //Create the VocabTerm object with the information
         VocabTerm word = new VocabTerm(term, definition);

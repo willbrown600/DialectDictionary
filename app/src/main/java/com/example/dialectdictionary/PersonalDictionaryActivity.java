@@ -9,16 +9,16 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class PersonalDictionaryActivity extends AppCompatActivity {
     DictionaryPresenter d = new DictionaryPresenter();
-    ArrayList<VocabTerm> terms;
+    ArrayList<VocabTerm> terms = new ArrayList<VocabTerm>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_dictionary);
-        VocabTerm blank = new VocabTerm("hola", "casa");
-        terms.add(blank);
+        terms = d.getArray();
         ListView pListView = (ListView) findViewById(R.id.listView);
         TermListAdapater adapter = new TermListAdapater(this, R.layout.adapter_view_layout, terms);
         pListView.setAdapter(adapter);

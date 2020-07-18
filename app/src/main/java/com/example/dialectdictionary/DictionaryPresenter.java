@@ -4,6 +4,7 @@ import android.content.Context;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,8 +21,42 @@ public class DictionaryPresenter {
 
     //Map that stores values with Keys that are the index in order received
     static Map<Integer, Object> numericMap = new HashMap<>();
+    VocabTerm blank = new VocabTerm("hola", "casa");
+    ArrayList<VocabTerm> terms = new ArrayList<VocabTerm>(Arrays.asList(blank));
 
-    void submit(final String term, final String definition) {
+    public static Map<String, Object> getAlphabeticMap() {
+        return alphabeticMap;
+    }
+
+    public static void setAlphabeticMap(Map<String, Object> alphabeticMap) {
+        DictionaryPresenter.alphabeticMap = alphabeticMap;
+    }
+
+    public static Map<Integer, Object> getNumericMap() {
+        return numericMap;
+    }
+
+    public static void setNumericMap(Map<Integer, Object> numericMap) {
+        DictionaryPresenter.numericMap = numericMap;
+    }
+
+    public ArrayList<VocabTerm> getArray() {
+
+        Map<Integer, Object> map = new HashMap<>();
+        map = getNumericMap();
+        //Create an Array list that contains the keys
+        ArrayList<Integer> numericKeys = new ArrayList<Integer>(map.keySet());
+        Object term = null;
+        for (Integer x : numericKeys) {
+            term = numericMap.get(x);
+            terms.add((VocabTerm) term);
+        }
+        return terms;
+
+
+    }
+
+    /*void submit(final String term, final String definition) {
         //Start a new Thread to not slow the UI
         new Thread(new Runnable() {
             @Override
@@ -34,9 +69,9 @@ public class DictionaryPresenter {
                 }
             }
         });
-    }
+    }*/
 
-    void addItem(String term, String definition) throws IOException {
+    void submit(String term, String definition) {
         //Get the First Initial from the Term
         char firstInitial = term.charAt(0);
 
@@ -87,23 +122,23 @@ public class DictionaryPresenter {
     public ArrayList<VocabTerm> sortAlphabetically() {
         ArrayList<String> keys = sortByAlphabeticKey();
         Object term = null;
-        ArrayList<VocabTerm> terms = null;
+        ArrayList<VocabTerm> sortedTerms = new ArrayList<VocabTerm>();
         for (String x : keys) {
             term = alphabeticMap.get(x);
-            terms.add((VocabTerm) term);
+            sortedTerms.add((VocabTerm) term);
         }
-        return terms;
+        return sortedTerms;
     }
 
     public ArrayList<VocabTerm> sortNumerically() {
         ArrayList<Integer> keys = sortByNumericKey();
-        ArrayList<VocabTerm> terms = null;
+        ArrayList<VocabTerm> sortedTerms = new ArrayList<VocabTerm>();
         Object term = null;
         for (Integer x : keys) {
             term = numericMap.get(x);
-            terms.add((VocabTerm) term);
+            sortedTerms.add((VocabTerm) term);
         }
-        return terms;
+        return sortedTerms;
     }
 
     public static ArrayList<String> sortByAlphabeticKey(){
