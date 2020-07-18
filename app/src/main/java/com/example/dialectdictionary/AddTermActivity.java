@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import java.io.IOException;
+
 public class AddTermActivity extends AppCompatActivity {
     //Creates an Instance of the Dictionary Presenter Class
     DictionaryPresenter p = new DictionaryPresenter();
@@ -17,7 +19,7 @@ public class AddTermActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_term);
     }
 
-    public void Submit(View view) {
+    public void Submit(View view) throws IOException {
         //When Submit is clicked, start the Personal Dictionary Activity
         Intent intent = new Intent(this, PersonalDictionaryActivity.class);
 

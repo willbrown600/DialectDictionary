@@ -1,24 +1,32 @@
 package com.example.dialectdictionary;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class PersonalDictionaryActivity extends AppCompatActivity {
     DictionaryPresenter d = new DictionaryPresenter();
     ArrayList<VocabTerm> terms = new ArrayList<VocabTerm>();
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_dictionary);
-        terms = d.getArray();
+        try {
+            terms = d.getArray();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         ListView pListView = (ListView) findViewById(R.id.listView);
         TermListAdapater adapter = new TermListAdapater(this, R.layout.adapter_view_layout, terms);
         pListView.setAdapter(adapter);
@@ -52,4 +60,8 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
 
     /* We need a display map Function that will receive the map from the Dictionary Presenter
     and display to listview and will display oncreate of this activity */
+
+
+
+
 }
