@@ -69,17 +69,26 @@
         app:layout_constraintHorizontal_bias="0.551"
         app:layout_constraintStart_toEndOf="@+id/button8" />
 
+    <EditText
+        android:id="@+id/searchFilter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ListView
         android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="462dp"
+        android:layout_width="390dp"
+        android:layout_height="421dp"
+        android:layout_below="@+id/searchFilter"
         android:layout_alignParentTop="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        app:layout_constraintTop_toTopOf="parent" />
     />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

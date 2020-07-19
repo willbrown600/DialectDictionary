@@ -29,9 +29,6 @@ public class DictionaryPresenter {
 
     Context context;
 
-    //save Key into a separate file in Json, and every time the map is created, open that file to get the refreshed key value
-
-
     /*Get Path Directory to Files
     //Get Path to Key.txt and save to keyPath
     Class classname = getClass();
@@ -208,10 +205,6 @@ public class DictionaryPresenter {
         //Sort the Array list Alphabetically
         Collections.sort(alphabetizedKeys);
         return alphabetizedKeys;
-        /* Display the TreeMap which is naturally sorted
-        for (String x : sortedKeys)
-            System.out.println("Key = " + x +
-                    ", Value = " + alphebeticMap.get(x));*/
     }
     public ArrayList<VocabTerm> sortNumerically() {
         ArrayList<Integer> keys = sortByNumericKey();
@@ -310,6 +303,12 @@ public class DictionaryPresenter {
         key++;
         return key;
     }
+
+    ArrayList<String> getAlphabeticMapKeys(){
+        ArrayList<String> alphabeticMapKeys = new ArrayList<String>(alphabeticMap.keySet());
+        return alphabeticMapKeys;
+    }
+
 }
 
 
