@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,11 +26,7 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_dictionary);
-        try {
-            terms = d.getArray();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        terms = d.getArray();
         ListView pListView = (ListView) findViewById(R.id.listView);
         TermListAdapater adapter = new TermListAdapater(this, R.layout.adapter_view_layout, terms);
         pListView.setAdapter(adapter);
@@ -46,9 +46,15 @@ public class PersonalDictionaryActivity extends AppCompatActivity {
 
     public void alphabeticSort(View view) {
         terms= d.sortAlphabetically();
+        ListView pListView = (ListView) findViewById(R.id.listView);
+        TermListAdapater adapter = new TermListAdapater(this, R.layout.adapter_view_layout, terms);
+        pListView.setAdapter(adapter);
     }
     public void numericSort(View view) {
         terms= d.sortNumerically();
+        ListView pListView = (ListView) findViewById(R.id.listView);
+        TermListAdapater adapter = new TermListAdapater(this, R.layout.adapter_view_layout, terms);
+        pListView.setAdapter(adapter);
     }
 
 
