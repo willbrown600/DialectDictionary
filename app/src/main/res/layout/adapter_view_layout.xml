@@ -39,7 +39,8 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="TextView2"
-                android:textColor="?android:attr/colorBackground" />
+                android:textColor="?android:attr/colorBackground"
+                android:textSize="18sp" />
         </LinearLayout>
 
     </LinearLayout>
