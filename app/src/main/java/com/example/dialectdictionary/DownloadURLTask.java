@@ -22,6 +22,7 @@ public class DownloadURLTask extends AsyncTask<Object, String, Word> {
             //boolean convertEnglishToSpanish = (boolean) voids[0];
             //Create InternetApi object to provide access to convertingEnglishToSpanish function.
             InternetAPI i = new InternetAPI();
+            //Create new i2 for definition.
             InternetAPIDef i2 = new InternetAPIDef();
             //must return a string.
 
