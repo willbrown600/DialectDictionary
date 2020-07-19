@@ -304,11 +304,6 @@ public class DictionaryPresenter {
         return key;
     }
 
-    ArrayList<String> getAlphabeticMapKeys(){
-        ArrayList<String> alphabeticMapKeys = new ArrayList<String>(alphabeticMap.keySet());
-        return alphabeticMapKeys;
-    }
-
 }
 
 
