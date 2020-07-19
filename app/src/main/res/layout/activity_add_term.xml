@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context=".AddTermActivity">
 
     <EditText
@@ -13,22 +14,33 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:ems="10"
+        android:ems="30"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Enter Term:"
         android:inputType="textPersonName"
+        android:textColor="?android:attr/colorBackground"
+        android:textColorHint="?android:attr/colorBackground"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/definition"
+        style="@android:style/Widget.AutoCompleteTextView"
         android:layout_width="300dp"
-        android:layout_height="400dp"
+        android:layout_height="250dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="100dp"
-        android:ems="10"
+        android:ems="30"
+        android:fontFamily="sans-serif-smallcaps"
         android:hint="Enter Definition:"
         android:inputType="textPersonName"
+        android:textColor="?android:attr/colorBackground"
+        android:textColorHighlight="@color/colorAccent"
+        android:textColorHint="?android:attr/colorBackground"
+        android:textColorLink="?attr/colorButtonNormal"
+        android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/term" />
 

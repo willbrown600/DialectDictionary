@@ -20,13 +20,20 @@ public class DownloadURLTask extends AsyncTask<Object, String, Word> {
         protected Word doInBackground(Object... voids) {
             wordToBeConverted = (String) voids[0];
             //boolean convertEnglishToSpanish = (boolean) voids[0];
-            //Create InternetApi object to provide access to convertingEnglish to Spanish function.
+            //Create InternetApi object to provide access to convertingEnglishToSpanish function.
             InternetAPI i = new InternetAPI();
+            //Create new i2 for definition.
             InternetAPIDef i2 = new InternetAPIDef();
             //must return a string.
 
             String translatedWord = i.convertEnglishToSpanish(wordToBeConverted);
             String definition = i2.getEnglishDef(wordToBeConverted);
+
+            /*if(translatedWord){
+                return i2.convertEnglishToSpanish(wordToBeConverted);
+            }
+            else
+            {return i.convertSpanishToEnglish(wordToBeConverted);}}*/
 
             Word word = new Word();
             word.setTranslatedWord(translatedWord);
@@ -35,13 +42,8 @@ public class DownloadURLTask extends AsyncTask<Object, String, Word> {
             return word;
 
         }
-            /*if(convertEnglishToSpanish){
-            return i.convertEnglishToSpanish(wordToBeConverted);
-        }
-        else
-            {return i.convertSpanishToEnglish(wordToBeConverted);}}*/
 
-        //Provide
+
 }
 
 
