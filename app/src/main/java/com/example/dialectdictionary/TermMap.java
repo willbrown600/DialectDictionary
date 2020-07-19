@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-public class TermMap {
+public class TermMap extends HashMap {
 
 
     /*Maybe some of this code needs to go into the Dictionary Presenter Java, we can take a look
@@ -14,6 +14,7 @@ public class TermMap {
 
 
     int KEY = 0;
+    //save Key into a separate file in Json, and every time the map is created, open that file to get the refreshed key value
 
     //Map that stores values with Keys that are the first Letter in the term
     static Map<String, Object> alphabeticMap = new HashMap<>();
@@ -21,13 +22,15 @@ public class TermMap {
     //Map that stores values with Keys that are the index in order received
     static Map<Integer, Object> numericMap = new HashMap<>();
 
-    public static void sortByAlphabeticKey(){
+    public static ArrayList<String> sortByAlphabeticKey(){
 
         //Create an Array list that contains the keys
         ArrayList<String> alphabetizedKeys = new ArrayList<String>(alphabeticMap.keySet());
 
         //Sort the Array list Alphabetically
         Collections.sort(alphabetizedKeys);
+
+        return alphabetizedKeys;
 
         /* Display the TreeMap which is naturally sorted
         for (String x : sortedKeys)

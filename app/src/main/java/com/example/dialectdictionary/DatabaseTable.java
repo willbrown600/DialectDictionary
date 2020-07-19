@@ -1,4 +1,4 @@
-package com.example.dialectdictionary;
+/*package com.example.dialectdictionary;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -107,4 +107,4 @@ public class DatabaseTable {
             return mDatabase.insert(FTS_VIRTUAL_TABLE, null, initialValues);
         }
     }
-}
+}*/
